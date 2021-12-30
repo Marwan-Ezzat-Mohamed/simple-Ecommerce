@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Orders from "./components/Orders";
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="d-flex flex-column vh-100 px-5 mx-5">
       <Router>
-        <Navbar />
+        <NavBar />
         {/* <Route
         path="/"
         render={() => {
