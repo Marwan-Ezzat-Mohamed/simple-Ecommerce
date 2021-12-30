@@ -50,11 +50,11 @@ router.delete("/:customer_id", async (req, res) => {
 });
 
 //delete an item from customer cart
-router.delete("/:sku/:customer_id", async (req, res) => {
+router.delete("/:id/:customer_id", async (req, res) => {
   const customer_id = parseInt(req.params.customer_id);
-  const itemSku = req.params.sku;
-  const result = await dbControl.deleteItemInCart(customer_id, itemSku);
-  if (result) return res.status(200).send(itemSku);
+  const itemid = req.params.id;
+  const result = await dbControl.deleteItemInCart(customer_id, itemid);
+  if (result) return res.status(200).send(itemid);
   return res.send(
     "the customer with the given id was not found or product does not exist"
   );
@@ -62,15 +62,15 @@ router.delete("/:sku/:customer_id", async (req, res) => {
 
 function validateItem(item) {
   const schema = Joi.object({
-    sku: Joi.string().required(),
+    id: Joi.string().required(),
     quantity: Joi.number().min(0).required(),
   });
   return schema.validate(item);
 }
 
-function validateItemSku(itemSku) {
+function validateItemid(itemid) {
   const schema = Joi.object({
-    sku: Joi.string().required(),
+    id: Joi.string().required(),
   });
   return schema.validate(item);
 }
@@ -82,9 +82,9 @@ function validateCustomerId(customer) {
   return schema.validate(customer);
 }
 
-function validateItemSku(item) {
+function validateItemid(item) {
   const schema = Joi.object({
-    product_sku: Joi.string().required(),
+    product_id: Joi.string().required(),
   });
   return schema.validate(item);
 }

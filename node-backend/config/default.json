@@ -1,5 +1,6 @@
 {
   "name": "default config",
+  "requiresAuth": false,
   "database": {
     "host": "mysql5034.site4now.net",
     "user": "a7e6dc_test",

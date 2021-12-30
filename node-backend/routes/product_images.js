@@ -10,10 +10,11 @@ router.get("/", async (req, res) => {
   res.send(result);
 });
 
-//get images of product with using its sku
-router.get("/:sku", async (req, res) => {
-  const sku = req.params.sku;
-  const result = await dbControl.getProductImages(sku);
+//get images of product by using its id
+router.get("/:id", async (req, res) => {
+
+  const id = req.params.id;
+  const result = await dbControl.getProductImages(id);
 
   if (result.length === 0 || result == -1) {
     return res
@@ -24,12 +25,12 @@ router.get("/:sku", async (req, res) => {
 });
 
 // add image to a product
-router.post("/:sku", async (req, res) => {
-  const sku = req.params.sku;
+router.post("/:id", async (req, res) => {
+  const id = req.params.id;
   const { error } = validateImage(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const result = await dbControl.addImageToProduct(req.body, sku);
+  const result = await dbControl.addImageToProduct(req.body, id);
   if (result.affectedRows === 0)
     return res.status(400).send("the product already has this image");
   res.send(result);

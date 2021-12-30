@@ -27,9 +27,9 @@ async function getAllImages() {
   return images;
 }
 
-async function getProductImages(sku) {
+async function getProductImages(id) {
   const connection = await dbControl.getConnection();
-  const query = queries.getProductImages(sku);
+  const query = queries.getProductImages(id);
   let done = true,
     error = -1,
     images;
@@ -48,12 +48,12 @@ async function getProductImages(sku) {
 
   if (!done || images.length === 0) return error;
 
-  return images;
+  return images.map((image) => "http://localhost:3900/images/" + image.image);
 }
 
-async function addImageToProduct(image, sku) {
+async function addImageToProduct(image, id) {
   const connection = await dbControl.getConnection();
-  const query = queries.addImageToProduct(image, sku);
+  const query = queries.addImageToProduct(image, id);
 
   let done = true;
   let error = -1,
@@ -96,7 +96,7 @@ async function editImage(id, imageUrl) {
   connection.end();
   if (!done) return error;
 
-   return result;
+  return result;
 }
 
 async function deleteImage(id) {
@@ -104,12 +104,13 @@ async function deleteImage(id) {
   const query = queries.deleteImage(id);
 
   let done = true,
-    error = -1,result;
+    error = -1,
+    result;
 
   await connection
     .query(query)
     .then((res) => {
-        result=res[0];
+      result = res[0];
       console.log("done deleting image with id " + id);
     })
     .catch((err) => {

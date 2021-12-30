@@ -51,9 +51,9 @@ async function getAllProducts() {
   return products;
 }
 
-async function getProduct(sku) {
+async function getProduct(id) {
   const connection = await dbControl.getConnection();
-  const query = queries.getProduct(sku);
+  const query = queries.getProduct(id);
 
   let done = true,
     error = -1,
@@ -64,7 +64,7 @@ async function getProduct(sku) {
     .then((res) => {
       product = res[0][0];
 
-      console.log("done getting product with sku " + sku);
+      console.log("done getting product with id " + id);
     })
     .catch((err) => {
       error = err.sqlMessage;
@@ -100,9 +100,9 @@ async function editProduct(product) {
   return product;
 }
 
-async function deleteProduct(sku) {
+async function deleteProduct(id) {
   const connection = await dbControl.getConnection();
-  const query = queries.deleteProduct(sku);
+  const query = queries.deleteProduct(id);
 
   let done = true;
   let error = -1;
@@ -126,7 +126,7 @@ async function deleteProduct(sku) {
 
 function mapToProduct(textRow) {
   let product = {
-    sku: textRow.sku,
+    id: textRow.id,
     description: textRow.description,
     stock: textRow.stock,
     name: textRow.name,
