@@ -15,3 +15,7 @@ body {
 .rounded {
   border-radius: 20px !important;
 }
+
+.bg-primary {
+  background-color: #0046be !important;
+}

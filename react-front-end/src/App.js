@@ -7,10 +7,11 @@ import Checkout from "./components/Checkout";
 
 const App = () => {
   return (
-    <div className="d-flex flex-column vh-100 px-5 mx-5">
+    <div className="d-flex flex-column vh-100 ">
       <Router>
         <NavBar />
-        {/* <Route
+        <div className="d-flex flex-column flex-grow-1 px-5 mx-5">
+          {/* <Route
         path="/"
         render={() => {
           return (
@@ -21,10 +22,11 @@ const App = () => {
         }}
       /> */}
 
-        <Route path="/home" render={(params) => <Home />} />
-        <Route path="/login" render={(params) => <Login />} />
-        <Route path="/orders" render={(params) => <Orders />} />
-        <Route path="/checkout" render={(params) => <Checkout />} />
+          <Route path="/home" render={(params) => <Home />} />
+          <Route path="/login" render={(params) => <Login />} />
+          <Route path="/orders" render={(params) => <Orders />} />
+          <Route path="/checkout" render={(params) => <Checkout />} />
+        </div>
       </Router>
     </div>
   );

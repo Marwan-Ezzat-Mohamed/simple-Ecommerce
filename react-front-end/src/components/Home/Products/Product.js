@@ -1,4 +1,17 @@
+import { useEffect, useState } from "react";
+import { getProductImages } from "../../../services/products";
+import notFound from "../../../assets/notFound.png";
+
 const Product = ({ product }) => {
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    async function fetchImages(id) {
+      const { data } = await getProductImages(id);
+      setImages(data);
+      console.log(data);
+    }
+    fetchImages(product.id);
+  }, [product]);
   return (
     <div
       className="col my-4 mx-2 justify-content-center align-items-center text-center rounded bg-white p-3 shadow"
@@ -10,9 +23,9 @@ const Product = ({ product }) => {
         className="img"
         style={{
           width: "200px",
-          height: "",
+          maxHeight: "400px",
         }}
-        src={"http://localhost:3900/images/product1.jpg"}
+        src={images?.length ? images[0] : notFound}
       />
       <div className="d-flex flex-colum justify-content-between mt-2 row align-items-center">
         <label className="text-secondary fs-5 fw-bold col">
