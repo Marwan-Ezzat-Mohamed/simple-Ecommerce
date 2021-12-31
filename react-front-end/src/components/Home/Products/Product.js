@@ -12,24 +12,23 @@ const Product = ({ product }) => {
     async function fetchImages(id) {
       const { data } = await getProductImages(id);
       setImages(data);
-      console.log(data);
     }
     fetchImages(product.id);
   }, []);
 
   return (
     <div
-      className="col-2 my-4 mx-2 d-flex flex-column justify-content-center align-items-center text-center rounded bg-white p-3 shadow"
+      className="col my-4 mx-2 d-flex flex-column justify-content-center align-items-center text-center rounded bg-white p-3 shadow"
       //   style={{
       //     maxWidth: "235px",
       //   }}
     >
       <img
-        className="img rounded shadow"
+        className="img rounded "
         style={{
           width: "250px",
           height: "300px",
-          objectFit: "cover",
+          objectFit: "scale-down",
         }}
         src={images?.length ? images[0] : notFound}
         onClick={() => {

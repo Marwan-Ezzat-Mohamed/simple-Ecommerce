@@ -27,10 +27,20 @@ body {
   background-color: #20d6ae !important;
   border-color: #20d6ae !important;
 }
-
 input {
-  border-radius: 5px;
-  border: 1px solid #4204ee;
+  background-color: #f2f2f6;
+  border-radius: 7px;
+
+  outline: none;
+  border: none;
+  border: 1px solid #c2c2c2;
   height: 40px;
-  background-color: white;
+
+  padding-inline-start: 1rem;
+  color: #333333;
+}
+
+
+.btn-primary {
+  background-color: #0046be !important;
 }

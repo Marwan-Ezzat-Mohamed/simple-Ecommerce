@@ -2,18 +2,23 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { useData } from "./../../contexts/commonData";
+import { useState } from "react";
 const NavBar = () => {
+  const [currentPage, setCurrentPage] = useState("/home");
   const history = useHistory();
   const { user, setUser } = useData();
   return (
-    <nav
-      className={`px-5 navbar bg-primary ${user?.id ? " " : " d-none"}`}
+    <Navbar
+      className={`px-5 navbar bg-primary text-center align-items-center sticky-top ${
+        user?.id ? " " : " d-none"
+      }`}
       bg="primary"
       variant="dark"
     >
       <Navbar.Brand
         onClick={() => {
           history.push("/home");
+          setCurrentPage("/home");
         }}
       >
         <img
@@ -28,7 +33,9 @@ const NavBar = () => {
           className="fs-4"
           onClick={() => {
             history.push("/orders");
+            setCurrentPage("/orders");
           }}
+          active={currentPage === "/orders"}
         >
           Orders
         </Nav.Link>
@@ -36,25 +43,27 @@ const NavBar = () => {
           className="fs-4"
           onClick={() => {
             history.push("/cart");
+            setCurrentPage("/cart");
           }}
+          active={currentPage === "/cart"}
         >
           Cart
         </Nav.Link>
       </Nav>
 
-      <label class="text-white mx-3 fs-5 fw-bold text-capitalize">
+      <label className="text-white mx-3 fs-3 fw-bold text-capitalize">
         {user?.email?.replace("@gmail.com", "")}
       </label>
-      <button
-        class="btn btn-danger float-right float-right py-1 px-2"
+
+      <i
+        class="fa fa-sign-out fs-1 text-danger"
+        style={{ cursor: "pointer" }}
         onClick={() => {
           history.push("/login");
           setUser({});
         }}
-      >
-        Logout
-      </button>
-    </nav>
+      />
+    </Navbar>
   );
 };
 

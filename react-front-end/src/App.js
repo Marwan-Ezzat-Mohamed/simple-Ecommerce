@@ -7,6 +7,7 @@ import Checkout from "./components/Checkout";
 import Cart from "./components/Cart/index";
 import ProductDetails from "./components/ProductDetails";
 import { useData } from "./contexts/commonData";
+import Register from "./components/Login/Register";
 
 const App = () => {
   const { user, setUser } = useData();
@@ -28,6 +29,7 @@ const App = () => {
             render={(params) => <ProductDetails {...params} />}
           />
           <Route path="/login" render={(params) => <Login />} />
+          <Route path="/register" render={(params) => <Register />} />
           <Route path="/orders" render={(params) => <Orders />} />
           <Route path="/checkout" render={(params) => <Checkout />} />
           <Route path="/cart" render={(params) => <Cart />} />

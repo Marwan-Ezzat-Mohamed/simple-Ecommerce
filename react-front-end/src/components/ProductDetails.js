@@ -44,7 +44,15 @@ const ProductDetails = (props) => {
               width: "400px",
             }}
           >
-            <img src={productImages[0]} className="w-100" />
+            <img
+              src={productImages[0]}
+              className="w-100"
+              style={{
+             
+                height: "400px",
+                objectFit: "scale-down",
+              }}
+            />
           </div>
 
           <div className="d-flex flex-column justify-content-between col ms-5">

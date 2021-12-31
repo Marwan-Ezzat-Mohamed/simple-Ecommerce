@@ -76,8 +76,8 @@ async function addCustomer(newCustomer) {
   const query = queries.addCustomer(
     newCustomer.email,
     newCustomer.password,
-    newCustomer.address,
-    newCustomer.phone
+    "el tagamo3 el 5ames",
+    "01023183990"
   );
 
   let done = true,
@@ -88,15 +88,17 @@ async function addCustomer(newCustomer) {
     .query(query)
     .then((res) => {
       customer = res[0];
+      console.log("123", res);
       console.log("done adding the customer");
     })
     .catch((err) => {
-      error = err.sqlMessage;
+      error = err;
       done = false;
     });
   connection.end();
-  if (!done) return error;
-  console.log(customer);
+ 
+  if (error?.errno) return error;
+
   return customer;
 }
 

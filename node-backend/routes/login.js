@@ -11,17 +11,21 @@ router.get("/:email/:password", async (req, res) => {
   if (result === -1) {
     return res.status(200).send("No customer found");
   }
-  return res.send(result);
+  return res.send(result[0]);
 });
 
-router.post("/", async (req, res) => {
-  const { error } = validateCustomer(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+router.post("/:email/:password", async (req, res) => {
+  const email = req.params.email;
+  const password = req.params.password;
 
-  const customer = req.body;
-
-  const result = await dbControl.addCustomer(customer);
-  res.send(customer);
+  const result = await dbControl.addCustomer({ email, password });
+  console.log("result: ", result);
+  if (result.errno) return res.status(200).send("Email already exists");
+  const customer = await dbControl.getCustomerByEmailAndPassword(
+    email,
+    password
+  );
+  res.send(customer[0]);
 });
 
 module.exports = router;

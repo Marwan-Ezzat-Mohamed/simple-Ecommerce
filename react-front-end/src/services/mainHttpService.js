@@ -6,3 +6,7 @@ const apiEndpoint = config.apiUrl + "/login";
 export function login(email, password) {
   return http.get(apiEndpoint + "/" + email + "/" + password);
 }
+
+export function signup(email, password) {
+  return http.post(apiEndpoint + "/" + email + "/" + password);
+}

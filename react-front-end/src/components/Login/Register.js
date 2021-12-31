@@ -1,47 +1,44 @@
 import React, { useState } from "react";
-import { login } from "./../../services/mainHttpService";
-import { useData } from "./../../contexts/commonData";
+import { signup } from "../../services/mainHttpService";
+import { useData } from "../../contexts/commonData";
 import { useHistory } from "react-router-dom";
 import logo from "./../../assets/coloredLogo.svg";
 
-function Login() {
+function Register() {
   const { setUser } = useData();
   const history = useHistory();
 
-  const [details, setDetails] = useState({ email: "", password: "" });
+  const [details, setDetails] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState("");
 
   const validateEmail = (email) =>
     email.match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
   const submitHandler = async (e) => {
     e.preventDefault();
     if (details.email === "") {
-      setEmailError("Email Is Required");
-      setPasswordError("");
-      setError("");
+      setError("Email Is Required");
     } else if (!validateEmail(details.email)) {
-      setEmailError("Invalid Email");
-      setPasswordError("");
-      setError("");
+      setError("InvalidEmail");
     } else if (details.password === "") {
-      setPasswordError("Password Is Required");
+      setError("Password Is Required");
+    } else if (details.password !== details.confirmPassword) {
+      setError("Passwords Do Not Match");
     } else {
-      setEmailError("");
-      setPasswordError("");
+      setError("");
       //call api
 
       setIsLoading(true);
-      const { data } = await login(details.email, details.password);
-      console.log("data", data);
-      if (data === "No customer found") {
-        setError("Invalid Email Or Password");
+      const { data } = await signup(details.email, details.password);
+      if (data === "Email already exists") {
+        setError("Email already exists");
         setIsLoading(false);
         return;
       }
@@ -58,7 +55,7 @@ function Login() {
       onSubmit={submitHandler}
       className="col-12 d-flex flex-column  align-items-center my-5  flex-grow-1"
     >
-      <div className="form-inner col-12  d-flex flex-column flex-grow-1 pt-5 mt-5 align-items-center ">
+      <div className="form-inner col-12  d-flex flex-column flex-grow-1 pt-5  align-items-center ">
         <img src={logo} style={{ height: "160px" }} />
 
         <div
@@ -90,6 +87,20 @@ function Login() {
             value={details.password}
           />
         </div>
+        <div className="form-group d-flex flex-column col-3 mt-4">
+          <label className="text-secondary mb-1" htmlFor="password">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            onChange={(e) =>
+              setDetails({ ...details, confirmPassword: e.target.value })
+            }
+            value={details.confirmPassword}
+          />
+        </div>
         {error != "" ? (
           <div className="alert alert-danger px-1 py-1 mt-2 col-3">{error}</div>
         ) : (
@@ -99,22 +110,22 @@ function Login() {
           className="btn btn-primary py-1 px-4 fw-bold mt-5"
           type="submit"
         >
-          Login
+          Sign up
         </button>
         <span className="mt-3">
-          Don't have an account?{" "}
+          Have an account?{" "}
           <label
             className="text-primary fw-bold"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              history.push("/register");
+              history.push("/login");
             }}
           >
-            Sign Up
+            login
           </label>
         </span>
       </div>
     </form>
   );
 }
-export default Login;
+export default Register;
