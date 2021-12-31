@@ -11,6 +11,9 @@ body {
 .text-success {
   color: #20d6ae !important;
 }
+.text-primary {
+  color: #0046be !important;
+}
 
 .rounded {
   border-radius: 20px !important;
@@ -56,4 +59,15 @@ body {
   overflow-y: auto;
   min-height: 500px;
   height: 0px;
+}
+.btn-success {
+  background-color: #20d6ae !important;
+  border-color: #20d6ae !important;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid #4204ee;
+  height: 40px;
+  background-color: white;
 }

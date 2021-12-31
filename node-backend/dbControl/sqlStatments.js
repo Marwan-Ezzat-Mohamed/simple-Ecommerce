@@ -1,5 +1,11 @@
 const SQL = require("sql-template-strings");
 
+getCustomerByEmailAndPassword = (email, password) => {
+  return SQL`
+    SELECT * FROM customers WHERE email = ${email} AND password = ${password}
+    `;
+};
+
 //products
 insertProduct = (product) => {
   if (product.description)
@@ -119,3 +125,4 @@ module.exports.addItemToCart = addItemToCart;
 module.exports.editItemQuantityInCart = editItemQuantityInCart;
 module.exports.resetCart = resetCart;
 module.exports.deleteItemInCart = deleteItemInCart;
+module.exports.getCustomerByEmailAndPassword = getCustomerByEmailAndPassword;

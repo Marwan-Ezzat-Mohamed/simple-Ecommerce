@@ -1,10 +1,16 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { useData } from "./../../contexts/commonData";
 const NavBar = () => {
   const history = useHistory();
+  const { user, setUser } = useData();
   return (
-    <Navbar className="px-5" bg="primary" variant="dark">
+    <nav
+      className={`px-5 navbar bg-primary ${user?.id ? " " : " d-none"}`}
+      bg="primary"
+      variant="dark"
+    >
       <Navbar.Brand
         onClick={() => {
           history.push("/home");
@@ -35,10 +41,20 @@ const NavBar = () => {
           Cart
         </Nav.Link>
       </Nav>
-      <Nav>
-        <button class="btn btn-danger float-right">Logout</button>
-      </Nav>
-    </Navbar>
+
+      <label class="text-white mx-3 fs-5 fw-bold text-capitalize">
+        {user?.email?.replace("@gmail.com", "")}
+      </label>
+      <button
+        class="btn btn-danger float-right float-right py-1 px-2"
+        onClick={() => {
+          history.push("/login");
+          setUser({});
+        }}
+      >
+        Logout
+      </button>
+    </nav>
   );
 };
 
