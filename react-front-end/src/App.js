@@ -5,7 +5,6 @@ import Login from "./components/Login";
 import Orders from "./components/Orders";
 import Checkout from "./components/Checkout";
 import Cart from "./components/Cart";
-import Cart from "./components/Cart/index";
 import ProductDetails from "./components/ProductDetails";
 import { useData } from "./contexts/commonData";
 import Register from "./components/Login/Register";
@@ -34,10 +33,6 @@ const App = () => {
           <Route path="/orders" render={(params) => <Orders />} />
           <Route path="/checkout" render={(params) => <Checkout />} />
           <Route path="/cart" render={(params) => <Cart />} />
-<<<<<<< HEAD
-
-=======
->>>>>>> a23639f1d18e4b6496db371fa465d34114e6eade
         </div>
       </Router>
     </div>
