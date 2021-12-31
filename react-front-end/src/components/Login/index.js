@@ -57,10 +57,10 @@ function Login() {
   return (
     <form
       onSubmit={submitHandler}
-      className="col-12 d-flex justify-content-center align-items-center  "
+      className="col-12 d-flex justify-content-center align-items-center mt-5"
     >
       <div className="form-inner col-12  d-flex flex-column justify-content-center align-items-center">
-        <img src={logo} style={{ height: "160px" }} />
+        <img src={logo} style={{ height: "160px"}} />
         {error != "" ? <div className="error">{error}</div> : ""}
 
         <div className="form-group d-flex flex-column col-4">
@@ -92,6 +92,9 @@ function Login() {
         <button className="btn btn-primary py-1 px-3 mt-5" type="submit">
           Login
         </button>
+        <span className="mt-2"> Don't have an account?&nbsp;
+          <a href="">Sign Up </a>
+        </span>
       </div>
     </form>
   );
