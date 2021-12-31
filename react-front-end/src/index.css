@@ -23,6 +23,43 @@ body {
   background-color: #0046be !important;
 }
 
+
+.card{
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.card h5{
+  /*border-bottom: 2px solid rgb(138, 133, 133);*/
+  text-align: center;
+  color: rgb(109, 104, 104);
+}
+
+
+
+.Toleft{
+  float: left;
+}
+
+.Toright{
+  float: right;
+  width:'100rem';
+  height:'10rem';
+}
+
+ .card .btn{
+   align-items: center;
+   background-color: rgb(25, 224, 75);
+   color: white;
+  
+}
+
+.flex-grow-1-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 500px;
+  height: 0px;
+}
 .btn-success {
   background-color: #20d6ae !important;
   border-color: #20d6ae !important;
