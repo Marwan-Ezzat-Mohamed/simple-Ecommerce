@@ -37,7 +37,7 @@ const ProductDetails = (props) => {
     <Loading />
   ) : (
     <div className="d-flex flex-column flex-grow-1 mt-5 align-items-center ">
-      <div className="bg-white col-12 p-5 rounded shadow">
+      <div className="bg-white col-10 p-5 rounded shadow">
         <div className="d-flex flex-row ">
           <div
             style={{
