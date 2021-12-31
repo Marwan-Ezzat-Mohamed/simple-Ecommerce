@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Orders from "./components/Orders";
 import Checkout from "./components/Checkout";
-
+import Cart from "./components/Cart";
 const App = () => {
   return (
     <div className="d-flex flex-column vh-100 ">
@@ -26,6 +26,8 @@ const App = () => {
           <Route path="/login" render={(params) => <Login />} />
           <Route path="/orders" render={(params) => <Orders />} />
           <Route path="/checkout" render={(params) => <Checkout />} />
+          <Route path="/cart" render={(params) => <Cart />} />
+
         </div>
       </Router>
     </div>
