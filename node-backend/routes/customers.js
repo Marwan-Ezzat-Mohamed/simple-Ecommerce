@@ -6,7 +6,7 @@ const dbControl = require("../dbControl/dbControlCustomer");
 
 router.get("/", async (req, res) => {
   const result = await dbControl.getAllCustomers();
-  if(result === -1){
+  if (result === -1) {
     return res.status(404).send("No customer found");
   }
   return res.send(result);
@@ -15,12 +15,11 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const customer_id = parseInt(req.params.id);
   const result = await dbControl.getCustomer(customer_id);
-  if(result === -1 || result.length === 0) {
+  if (result === -1 || result.length === 0) {
     return res.status(404).send("No customer found with this id");
   }
-    return res.send(result);
+  return res.send(result);
 });
-
 
 router.post("/", async (req, res) => {
   const { error } = validateCustomer(req.body);

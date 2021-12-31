@@ -1,5 +1,7 @@
 const customer = require("./routes/customers");
+
 const cart = require("./routes/cart");
+const login = require("./routes/login");
 const products = require("./routes/products");
 const product_images = require("./routes/product_images");
 const express = require("express");
@@ -15,6 +17,7 @@ app.use(express.json());
 app.use(formData.parse());
 app.use(auth.verifyToken);
 
+app.use("/api/login", login);
 app.use("/api/customers", customer);
 app.use("/api/cart", cart);
 app.use("/api/products", products);
