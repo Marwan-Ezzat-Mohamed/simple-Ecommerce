@@ -15,7 +15,7 @@ const ProductDetails = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const { setCart } = useData();
+  const { setCart, cart } = useData();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -34,9 +34,25 @@ const ProductDetails = (props) => {
   };
 
   const handleAddToCart = () => {
-    setCart((cart) => [...cart, { ...product, quantity }]);
-    console.log("54a5a ");
-    toast.success("Item has been added to cart");
+    //check if product is already in cart
+
+    const productInCart = cart.find((item) => item.id === product.id);
+
+    if (productInCart) {
+      // if product is already in cart, update quantity
+      const newCart = cart.map((item) => {
+        if (item.id === product.id) {
+          item.quantity = quantity;
+        }
+        return item;
+      });
+      setCart(newCart);
+      toast.success(`Item added to cart`);
+    } else {
+      // if product is not in cart, add it
+      setCart([...cart, { ...product, quantity, image: productImages[0] }]);
+      toast.success(`Item added to cart`);
+    }
   };
 
   return loading ? (
