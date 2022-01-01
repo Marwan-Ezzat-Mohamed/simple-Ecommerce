@@ -2,34 +2,16 @@ import { Card, Row, Col, Container } from "react-bootstrap";
 import image from "../../assets/0120424999_6_1_1.webp";
 import CartItem from "./CartItem";
 import { useHistory } from "react-router-dom";
-const { cart } = useData(); 
-import { useData } from "./../contexts/commonData";
+
+import { useData } from "../../contexts/commonData";
 
 const Cart = () => {
-  const cart = [
-    {
-      id: "2",
-      description:
-        "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      stock: 100,
-      name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15",
-      price: 109.95,
-      quantity: 1,
-    },
-    {
-      id: "3",
-      description:
-        "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      stock: 100,
-      name: "Mens Casual Premium Slim Fit T-Shirts ",
-      price: 22.3,
-      quantity: 1,
-    },
-  ];
-
-  const history = useHistory();
-  const cart = window.localStorage.getItem("cart");
   
+  
+  
+  const history = useHistory();
+  const { cart } = useData(); 
+
   return (
     <div className="d-flex flex-row justify-content-between col-12 flex-grow-1 p-3 py-5">
       <div className="d-flex flex-column col-7">
