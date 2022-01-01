@@ -88,3 +88,23 @@ input {
 .img {
   -webkit-user-drag: none;
 }
+
+.form-group{
+  margin-top: 20px;
+}
+
+.checkout{
+  display: inline-block;
+}
+
+
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+
+
+
+

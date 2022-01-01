@@ -1,3 +1,5 @@
+import { propTypes } from "react-bootstrap/esm/Image";
+
 const CartItem = ({ title, img, Description, price }) => {
   return (
     <div className="card mb-4 col-12">
@@ -27,5 +29,9 @@ const CartItem = ({ title, img, Description, price }) => {
     </div>
   );
 };
+
+CartItem.protoTypes = {
+  price: propTypes.float.isRequired
+}
 
 export default CartItem;
