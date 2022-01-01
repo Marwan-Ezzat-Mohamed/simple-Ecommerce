@@ -5,6 +5,8 @@ import notFound from "../assets/notFound.png";
 import Loading from "./common/Loading/Loading";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { useData } from "./../contexts/commonData";
+import { toast } from "react-toastify";
 
 const ProductDetails = (props) => {
   const id = props.match.params.id;
@@ -12,6 +14,8 @@ const ProductDetails = (props) => {
   const [productImages, setProductImages] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
+
+  const { setCart } = useData();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -30,7 +34,9 @@ const ProductDetails = (props) => {
   };
 
   const handleAddToCart = () => {
-    //props.addToCart(product, quantity);
+    setCart((cart) => [...cart, { ...product, quantity }]);
+    console.log("54a5a ");
+    toast.success("Item has been added to cart");
   };
 
   return loading ? (
@@ -48,7 +54,6 @@ const ProductDetails = (props) => {
               src={productImages[0]}
               className="w-100"
               style={{
-             
                 height: "400px",
                 objectFit: "scale-down",
               }}
@@ -91,7 +96,10 @@ const ProductDetails = (props) => {
                 <label className="text-secondary fs-3 fw-bold">EGP</label>
               </div>
 
-              <button className="btn btn-success fs-4 fw-bold py-1 px-3">
+              <button
+                className="btn btn-success fs-4 fw-bold py-1 px-3"
+                onClick={handleAddToCart}
+              >
                 <i className="fa fa-cart-plus me-2" />
                 Add to cart
               </button>

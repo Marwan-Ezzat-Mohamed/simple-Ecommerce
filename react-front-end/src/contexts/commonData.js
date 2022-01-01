@@ -9,10 +9,13 @@ export function useData() {
 
 export function CommonDataProvider({ children }) {
   const [user, setUser] = useLocalStorage("currentUser", null);
+  const [cart, setCart] = useLocalStorage("cart", []);
 
   const value = {
     user,
     setUser,
+    cart,
+    setCart,
   };
 
   return (

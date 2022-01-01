@@ -8,11 +8,13 @@ import Cart from "./components/Cart";
 import ProductDetails from "./components/ProductDetails";
 import { useData } from "./contexts/commonData";
 import Register from "./components/Login/Register";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { user, setUser } = useData();
   return (
     <div className="d-flex flex-column vh-100 ">
+      <ToastContainer />
       <Router>
         <NavBar />
         <div className="d-flex flex-column flex-grow-1 px-5 mx-5">
