@@ -30,8 +30,4 @@ const CartItem = ({ title, img, Description, price }) => {
   );
 };
 
-CartItem.protoTypes = {
-  price: propTypes.float.isRequired
-}
-
 export default CartItem;

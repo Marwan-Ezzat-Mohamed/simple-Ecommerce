@@ -2,67 +2,31 @@ import { Card, Row, Col, Container } from "react-bootstrap";
 import image from "../../assets/0120424999_6_1_1.webp";
 import CartItem from "./CartItem";
 import { useHistory } from "react-router-dom";
-
 import { useData } from "../../contexts/commonData";
 
 const Cart = () => {
   
-  
-  
   const history = useHistory();
   const { cart } = useData(); 
+  const Taxs =6.35;
+
+  let total = cart.reduce((Prev,cur)=>{
+    return Prev + cur.quantity*cur.price;
+  },0);
 
   return (
     <div className="d-flex flex-row justify-content-between col-12 flex-grow-1 p-3 py-5">
       <div className="d-flex flex-column col-7">
         <div className=" flex-grow-1-scroll  pe-4 my-4  col-12">
-          <CartItem
-            img={image}
-            title="Card title"
-            Description="Some quick example text to build on the card title and make up the bulk of
-      the card's content."
-            price={65}
-          />
-
-          <CartItem
-            img={image}
-            title="Card title"
-            Description="Some quick example text to build on the card title and make up the bulk of
-      the card's content."
-            price={23}
-          />
-
-          <CartItem
-            img={image}
-            title="Card title"
-            Description="Some quick example text to build on the card title and make up the bulk of
-      the card's content."
-            price={78}
-          />
-
-          <CartItem
-            img={image}
-            title="Card title"
-            Description="Some quick example text to build on the card title and make up the bulk of
-      the card's content."
-            price={30}
-          />
-
-          <CartItem
-            img={image}
-            title="Card title"
-            Description="Some quick example text to build on the card title and make up the bulk of
-      the card's content."
-            price={80}
-          />
-
-          <CartItem
-            img={image}
-            title="Card title"
-            Description="Some quick example text to build on the card title and make up the bulk of
-      the card's content."
-            price={40}
-          />
+         {cart.map((Cart)=>(
+           <CartItem
+            key={Cart.id}
+            title={Cart.name} 
+            Description={Cart.description} 
+            price={Cart.price}>
+            </CartItem>
+         ))} 
+            
         </div>
       </div>
 
@@ -78,17 +42,17 @@ const Cart = () => {
             <hr />
             <table className="card-body">
               <tr>
-                <td>Item Total</td>
+                <td>Item Total</td>${parseFloat(total).toFixed(2)}
               </tr>
               <tr>
-                <td>Store pickup</td>
+                <td>Store pickup</td>FREE
               </tr>
               <tr>
-                <p>Estimated Sales Tax</p>
+                <p>Estimated Sales Tax ${Taxs}</p>
               </tr>
             </table>
             <hr />
-            <p>Total</p>
+            <p>Total ${parseFloat(total+Taxs).toFixed(2)}</p>
             <center>
               <button
                 type="button"
