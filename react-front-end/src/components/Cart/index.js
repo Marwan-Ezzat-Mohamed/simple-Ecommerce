@@ -6,7 +6,7 @@ import { useData } from "../../contexts/commonData";
 
 const Cart = () => {
   const history = useHistory();
-  const { cart } = useData();
+  const { cart, setCart } = useData();
   const Taxs = 6.35;
 
   let total = cart.reduce((Prev, cur) => {
