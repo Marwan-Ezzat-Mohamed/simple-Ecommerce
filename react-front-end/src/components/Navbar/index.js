@@ -3,10 +3,13 @@ import { useHistory } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { useData } from "./../../contexts/commonData";
 import { useState } from "react";
+import Badge from "@material-ui/core/Badge";
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
+
 const NavBar = () => {
   const [currentPage, setCurrentPage] = useState("/home");
   const history = useHistory();
-  const { user, setUser } = useData();
+  const { user, setUser, cart } = useData();
   return (
     <Navbar
       className={`px-5 navbar bg-primary text-center align-items-center sticky-top ${
@@ -47,7 +50,10 @@ const NavBar = () => {
           }}
           active={currentPage === "/cart"}
         >
-          Cart
+          Cart{" "}
+          <Badge badgeContent={cart.length ?? 0} color="secondary">
+            <ShoppingCart />
+          </Badge>
         </Nav.Link>
       </Nav>
 

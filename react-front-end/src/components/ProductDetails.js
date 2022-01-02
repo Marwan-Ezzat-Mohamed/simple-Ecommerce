@@ -42,7 +42,7 @@ const ProductDetails = (props) => {
       // if product is already in cart, update quantity
       const newCart = cart.map((item) => {
         if (item.id === product.id) {
-          item.quantity = quantity;
+          item.quantity = item.quantity + quantity;
         }
         return item;
       });

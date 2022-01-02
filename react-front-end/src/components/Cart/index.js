@@ -5,28 +5,28 @@ import { useHistory } from "react-router-dom";
 import { useData } from "../../contexts/commonData";
 
 const Cart = () => {
-  
   const history = useHistory();
-  const { cart } = useData(); 
-  const Taxs =6.35;
+  const { cart } = useData();
+  const Taxs = 6.35;
 
-  let total = cart.reduce((Prev,cur)=>{
-    return Prev + cur.quantity*cur.price;
-  },0);
+  let total = cart.reduce((Prev, cur) => {
+    return Prev + cur.quantity * cur.price;
+  }, 0);
 
   return (
     <div className="d-flex flex-row justify-content-between col-12 flex-grow-1 p-3 py-5">
       <div className="d-flex flex-column col-7">
         <div className=" flex-grow-1-scroll  pe-4 my-4  col-12">
-         {cart.map((Cart)=>(
-           <CartItem
-            key={Cart.id}
-            title={Cart.name} 
-            Description={Cart.description} 
-            price={Cart.price}>
-            </CartItem>
-         ))} 
-            
+          {cart.map((product) => (
+            <CartItem
+              key={product.id}
+              title={product.name}
+              Description={product.description}
+              price={product.price}
+              img={product.image}
+              quantity={product.quantity}
+            ></CartItem>
+          ))}
         </div>
       </div>
 
@@ -52,7 +52,7 @@ const Cart = () => {
               </tr>
             </table>
             <hr />
-            <p>Total ${parseFloat(total+Taxs).toFixed(2)}</p>
+            <p>Total ${parseFloat(total + Taxs).toFixed(2)}</p>
             <center>
               <button
                 type="button"

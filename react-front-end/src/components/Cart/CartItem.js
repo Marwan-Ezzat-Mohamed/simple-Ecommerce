@@ -1,12 +1,12 @@
 import { propTypes } from "react-bootstrap/esm/Image";
 
-const CartItem = ({ title, img, Description, price }) => {
+const CartItem = ({ title, img, Description, price, quantity }) => {
   return (
     <div className="card mb-4 col-12">
       <div className="row m-0 no-gutters">
         <div className="col d-flex py-2 justify-content-center">
           <img
-            src={"http://localhost:3900/images/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"}
+            src={img}
             style={{
               width: "150px",
               objectFit: "scale-down",

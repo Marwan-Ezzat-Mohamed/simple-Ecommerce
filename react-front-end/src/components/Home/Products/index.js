@@ -50,7 +50,7 @@ const Products = () => {
   return (
     <div className="col-12 align-items-center d-flex flex-column justify-content-between flex-grow-1  ">
       <div className="col-12 align-items-center d-flex flex-column">
-        <div className="col-8 q d-flex flex-column align-items-center ">
+        <div className="col-12 col-md-8 d-flex flex-column align-items-center ">
           <SearchBar
             className="col-12 my-3 shadow "
             value={searchQuery}
