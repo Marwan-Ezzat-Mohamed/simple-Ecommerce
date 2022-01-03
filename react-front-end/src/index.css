@@ -105,6 +105,11 @@ input {
   float: left;
 }
 
+.align{
+  float: right;
+  text-align: right;
+}
 
-
-
+.btn-danger.btn{
+  background-color: rgb(173, 34, 34);
+}
