@@ -3,16 +3,33 @@ import { Form } from "react-bootstrap";
 import image from "../../assets/visas_logos.png";
 import imag from "../../assets/see-the-source-image-cash-on-delivery-now-available-11563353301vi2pno7jfy.png";
 import { useData } from "./../../contexts/commonData";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const Checkout = () => {
-  const { cart, setCart, orders, setOrders } = useData();
+  const { userCart, setUserCart, orders, setOrders, user } = useData();
+  const Tax = 6.35;
+
+  const history = useHistory();
+
+  const total = userCart.reduce((Prev, cur) => {
+    return Prev + cur.quantity * cur.price;
+  }, 0);
+
   const handleCheckout = () => {
-      console.log('312412')
     setOrders([
-      { ...cart, orderId: orders.length + 1, status: "pending" },
+      {
+        products: [...userCart],
+        orderId: orders.length + 1,
+        status: "pending",
+        total: total,
+        userId: user.id,
+      },
       ...orders,
     ]);
-    setCart([]);
+    setUserCart([]);
+    toast.success("Order Placed Successfully");
+    history.push("/home");
   };
 
   return (
@@ -65,26 +82,34 @@ const Checkout = () => {
       </div>
 
       <div
-        className="card mt-4 my-4 right"
+        className="card mx-3 my-4 right"
         style={{ width: "25rem", height: "17rem" }}
       >
         <div className="card-block bg-white py-2 px-2 ">
           <Container>
             <h5 className="card-title"> Order Summary</h5>
             <hr />
-            <table className="card-body">
-              <tr>
-                <td>Item Total</td>
-              </tr>
-              <tr>
-                <td>Store pickup</td>
-              </tr>
-              <tr>
-                <p>Estimated Sales Tax</p>
-              </tr>
-            </table>
+            <div className="card-body">
+              <p>
+                Item Total{" "}
+                <label className="align">
+                  EGP{parseFloat(total).toFixed(2)}
+                </label>
+              </p>
+              <p>
+                Store pickup <label className="align">FREE</label>
+              </p>
+              <p>
+                Estimated Sales Tax <label className="align"> EGP{Tax}</label>{" "}
+              </p>
+            </div>
             <hr />
-            <p>Total</p>
+            <p>
+              Total{" "}
+              <label className="align">
+                EGP{parseFloat(total + Tax).toFixed(2)}
+              </label>
+            </p>
           </Container>
         </div>
       </div>
@@ -145,14 +170,14 @@ const Checkout = () => {
               >
                 <option selected>Month</option>
                 <option value="1">1.January</option>
-                <option value="2">2.Febraury</option>
+                <option value="2">2.February</option>
                 <option value="3">3.March</option>
                 <option value="4">4.April</option>
                 <option value="5">5.May</option>
                 <option value="6">6.June</option>
                 <option value="7">7.July</option>
                 <option value="8">8.August</option>
-                <option value="9">9.Septemper</option>
+                <option value="9">9.September</option>
                 <option value="10">10.October</option>
                 <option value="11">11.November</option>
                 <option value="12">12.December</option>
@@ -174,7 +199,7 @@ const Checkout = () => {
             </div>
             <br></br>
 
-            <div class="col-auto">
+            <div class="col">
               <button
                 type="submit"
                 class="btn btn-primary mb-3"

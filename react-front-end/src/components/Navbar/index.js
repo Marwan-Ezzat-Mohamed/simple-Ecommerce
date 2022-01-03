@@ -9,10 +9,10 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 const NavBar = () => {
   const [currentPage, setCurrentPage] = useState("/home");
   const history = useHistory();
-  const { user, setUser, cart } = useData();
+  const { user, setUser, userCart } = useData();
   return (
     <Navbar
-      className={`px-5 navbar bg-primary text-center align-items-center sticky-top ${
+      className={`px-2 px-md-5  navbar bg-primary text-center align-items-center sticky-top ${
         user?.id ? " " : " d-none"
       }`}
       bg="primary"
@@ -51,7 +51,7 @@ const NavBar = () => {
           active={currentPage === "/cart"}
         >
           Cart{" "}
-          <Badge badgeContent={cart.length ?? 0} color="secondary">
+          <Badge badgeContent={userCart.length ?? 0} color="secondary">
             <ShoppingCart />
           </Badge>
         </Nav.Link>

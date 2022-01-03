@@ -3,6 +3,7 @@ import { getProductImages } from "../../../services/products";
 import notFound from "../../../assets/notFound.png";
 import { useSessionStorage } from "../../common/Hooks/useStorage";
 import { useHistory } from "react-router-dom";
+import razer from "../../../assets/razer.jpg";
 
 const Product = ({ product }) => {
   const [images, setImages] = useSessionStorage(product.id, []);
@@ -30,7 +31,13 @@ const Product = ({ product }) => {
           height: "300px",
           objectFit: "scale-down",
         }}
-        src={images?.length ? images[0] : notFound}
+        src={
+          product.name === "name"
+            ? razer
+            : images?.length
+            ? images[0]
+            : notFound
+        }
         onClick={() => {
           history.push(`/products/${product.id}`);
         }}
