@@ -154,7 +154,7 @@ const ProductDetails = (props) => {
               </div>
               <div className="d-flex">
                 <label className="text-success fs-3 fw-bold">
-                  {product?.price * quantity}
+                  {+(product?.price * quantity).toFixed(2)}
                 </label>
                 <label className="text-secondary fs-3 fw-bold">EGP</label>
               </div>

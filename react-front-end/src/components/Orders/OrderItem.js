@@ -19,7 +19,9 @@ const OrderItem = ({ product, number }) => {
       </div>
       <div className="col text-center align-item">
         <label className="text-secondary fs-3 fw-bold me-2"> Price: </label>
-        <label className="text-success fs-3 fw-bold">{product.price}</label>
+        <label className="text-success fs-3 fw-bold">
+          {product.price.toFixed(2)}
+        </label>
       </div>
       <div className="col">
         <label className="text-secondary fs-3 fw-bold me-2">Quantity:</label>
@@ -28,7 +30,7 @@ const OrderItem = ({ product, number }) => {
       <div className="col">
         <label className="text-secondary fs-3 fw-bold me-2">Item Total:</label>
         <label className="text-success fs-3 fw-bold">
-          {product.price * product.quantity}EGP
+          {(product.price * product.quantity).toFixed(2)}EGP
         </label>
       </div>
     </div>

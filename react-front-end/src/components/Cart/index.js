@@ -20,16 +20,18 @@ const Cart = () => {
   };
 
   const Quantity = (val, id) => {
+    console.log(userCart);
     setUserCart((cart) => {
-      const newCart = cart.map((product) => {
-        if (product.id === id) {
-          //product.quantity = product.quantity + val;
-          if (product.quantity + val > 0)
-            product.quantity = product.quantity + val;
-          else product.quantity = 1;
-        }
-        return product;
-      });
+      const newCart = [
+        ...cart.map((product) => {
+          if (product.id === id) {
+            //product.quantity = product.quantity + val;
+            if (val > 0) product.quantity = val;
+            else product.quantity = 1;
+          }
+          return product;
+        }),
+      ];
       return newCart;
     });
   };

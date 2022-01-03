@@ -3,7 +3,8 @@ import { signup } from "../../services/mainHttpService";
 import { useData } from "../../contexts/commonData";
 import { useHistory } from "react-router-dom";
 import logo from "./../../assets/coloredLogo.svg";
-
+import logoA from "./../../assets/logoA.svg";
+import tag from "./../../assets/tag.svg";
 function Register() {
   const { setUser } = useData();
   const history = useHistory();
@@ -55,8 +56,11 @@ function Register() {
       onSubmit={submitHandler}
       className="col-12 d-flex flex-column  align-items-center my-5  flex-grow-1"
     >
-      <div className="form-inner col-12  d-flex flex-column flex-grow-1 pt-5  align-items-center ">
-        <img src={logo} style={{ height: "160px" }} />
+      <div className="form-inner col-12  d-flex flex-column flex-grow-1 pt-5  align-items-center " style={{marginTop:"48px"}}>
+        <div className={`logo-container`} >
+          <img draggable="false" src={tag} class={`tag `} />
+          <img draggable="false" src={logoA} class={`logo `} />
+        </div>
 
         <div
           className="form-group d-flex flex-column col-3 "

@@ -13,6 +13,12 @@ export function CommonDataProvider({ children }) {
   const [orders, setOrders] = useLocalStorage("orders", []);
 
   const [userCart, setUserCart] = useState([]);
+  const [animations, setAnimations] = useState([
+    "logo-container-animation",
+    "login-container",
+    "tag-animation",
+    "logo-animation",
+  ]);
 
   useEffect(() => {
     if (user?.id) {
@@ -44,6 +50,8 @@ export function CommonDataProvider({ children }) {
     setOrders,
     userCart,
     setUserCart,
+    animations,
+    setAnimations,
   };
 
   return (

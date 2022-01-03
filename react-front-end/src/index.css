@@ -89,14 +89,13 @@ input {
   -webkit-user-drag: none;
 }
 
-.form-group{
+.form-group {
   margin-top: 20px;
 }
 
-.checkout{
+.checkout {
   display: inline-block;
 }
-
 
 .right {
   float: right;
@@ -105,11 +104,140 @@ input {
   float: left;
 }
 
-.align{
+.align {
   float: right;
   text-align: right;
 }
 
-.btn-danger.btn{
+.btn-danger.btn {
   background-color: rgb(173, 34, 34);
+}
+
+.logo-animation {
+  width: 80px;
+  height: 80px;
+
+  opacity: 0;
+
+  /*background-color: white;*/
+
+  animation-name: logoAnim;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.tag-animation {
+  
+  opacity: 0;
+
+  animation-name: taganim;
+  animation-duration: 0.8s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.logo {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+
+  user-select: none;
+  /* animation-iteration-count: infinite;*/
+}
+
+.tag {
+  margin: 0;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: calc(50% - 80px);
+  left: calc(50px + 50%);
+
+  
+  user-select: none;
+}
+
+.login-container {
+  opacity: 0;
+  animation-name: loginFade;
+  animation-duration: 0.8s;
+  animation-delay: 2.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes loginFade {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cont {
+  100% {
+    top: calc(0% + 144px);
+  }
+}
+
+@keyframes logoAnim {
+  55% {
+    width: 200px;
+    height: 200px;
+  }
+
+  60% {
+    opacity: 1;
+    left: 50%;
+  }
+
+  100% {
+    width: 180px;
+    height: 180px;
+
+    opacity: 1;
+  }
+}
+
+@keyframes taganim {
+  0% {
+    transform: rotate(-15deg);
+  }
+
+  20% {
+    transform: rotate(15deg);
+  }
+
+  40% {
+    transform: rotate(-15deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+
+    opacity: 1;
+  }
+}
+.logo-container {
+  margin: 0;
+  position: absolute;
+
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  /*background-color: red;*/
+  transform: translate(-50%, -50%);
+}
+
+.logo-container-animation {
+  top: 50%;
+  animation-delay: 2s;
+
+  animation-duration: 1s;
+  animation-name: cont;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
 }

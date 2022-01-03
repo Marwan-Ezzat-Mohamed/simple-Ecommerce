@@ -48,7 +48,7 @@ const Product = ({ product }) => {
         </label>
         <br />
         <label className="text-success fs-5 fw-bold col">
-          {product.price}EGP{" "}
+          {product.price.toFixed(2)}EGP{" "}
         </label>
       </div>
     </div>

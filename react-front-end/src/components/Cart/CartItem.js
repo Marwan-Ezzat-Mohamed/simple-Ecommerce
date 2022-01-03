@@ -29,7 +29,7 @@ const CartItem = ({
             <p className="card-text">{Description}</p>
           </div>
         </div>
-        <b className="col fs-4 fw-bold text-success">{price}EGP </b>
+        <b className="col fs-4 fw-bold text-success">{price.toFixed(2)}EGP </b>
       </div>
 
       <div className=" col-md-7 offset-md-3">
@@ -38,20 +38,20 @@ const CartItem = ({
           <i
             className="fs-3 fa fa-minus-circle text-primary mx-2"
             onClick={() => {
-              Quantity(-1, id);
+              Quantity(quantity - 1, id);
             }}
           />
           <label className="text-secondary fs-3 fw-bold">{quantity}</label>
           <i
             className="fs-3 fa fa-plus-circle text-primary mx-2"
             onClick={() => {
-              Quantity(1, id);
+              Quantity(quantity + 1, id);
             }}
           />
           <button
             style={{
               color: "white",
-              background_color: "red",
+              backgroundColor: "red",
               cursor: "pointer",
             }}
             className="btn btn-danger align fs-5 fw-bold py-1 px-3"

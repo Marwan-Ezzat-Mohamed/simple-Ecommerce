@@ -23,3 +23,22 @@ app.use("/api/cart", cart);
 app.use("/api/products", products);
 app.use("/api/products_images", product_images);
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+/*
+
+local database
+{
+  "name": "default config",
+  "requiresAuth": false,
+  "database": {
+    "host": "127.0.0.1",
+    "user": "root",
+    "port": "3306",
+    "database": "web_project",
+    "password": "01003494703Mn"
+  }
+}
+
+
+
+*/
