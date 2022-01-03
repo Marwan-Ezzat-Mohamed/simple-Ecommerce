@@ -1,6 +1,7 @@
-
+import { useData } from "./../../contexts/commonData";
 const Orders = () => {
-  return <>Orders</>;
+  const { orders } = useData();
+  return <>{JSON.stringify(orders)}</>;
 };
 
 export default Orders;
